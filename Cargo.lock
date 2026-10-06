@@ -1982,6 +1982,8 @@ dependencies = [
  "pallet-treasury",
  "pallet-uniques",
  "pallet-utility",
+ "pallet-validator-collators",
+ "pallet-validator-set-announcer",
  "pallet-verify-signature",
  "pallet-vesting",
  "pallet-vesting-precompiles",
@@ -5851,6 +5853,7 @@ name = "cumulus-zombienet-sdk-tests"
 version = "0.1.0"
 dependencies = [
  "anyhow",
+ "bs58",
  "cid",
  "cumulus-primitives-core",
  "cumulus-test-runtime",
@@ -9676,7 +9679,7 @@ dependencies = [
  "futures",
  "jam-codec",
  "jam-types",
- "jsonrpsee 0.26.0",
+ "jsonrpsee 0.26.1",
  "rand 0.9.0",
  "serde",
  "serde_json",
@@ -9833,14 +9836,14 @@ dependencies = [
 
 [[package]]
 name = "jsonrpsee"
-version = "0.26.0"
+version = "0.26.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3f3f48dc3e6b8bd21e15436c1ddd0bc22a6a54e8ec46fedd6adf3425f396ec6a"
+checksum = "4826d5921c90b936eae1b0c09fef26697c4d7269ba5d6bb976f762a870a5ed82"
 dependencies = [
- "jsonrpsee-core 0.26.0",
- "jsonrpsee-proc-macros 0.26.0",
- "jsonrpsee-server 0.26.0",
- "jsonrpsee-types 0.26.0",
+ "jsonrpsee-core 0.26.1",
+ "jsonrpsee-proc-macros 0.26.1",
+ "jsonrpsee-server 0.26.1",
+ "jsonrpsee-types 0.26.1",
  "tokio",
  "tracing",
 ]
@@ -9899,9 +9902,9 @@ dependencies = [
 
 [[package]]
 name = "jsonrpsee-core"
-version = "0.26.0"
+version = "0.26.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "316c96719901f05d1137f19ba598b5fe9c9bc39f4335f67f6be8613921946480"
+checksum = "ba6e425d1828eb60a9e054f77b60e375fbf46aabff72c46b5ea24406566f7e91"
 dependencies = [
  "async-trait",
  "bytes",
@@ -9909,7 +9912,7 @@ dependencies = [
  "http 1.1.0",
  "http-body 1.0.0",
  "http-body-util",
- "jsonrpsee-types 0.26.0",
+ "jsonrpsee-types 0.26.1",
  "parking_lot 0.12.3",
  "pin-project",
  "rand 0.9.0",
@@ -9962,9 +9965,9 @@ dependencies = [
 
 [[package]]
 name = "jsonrpsee-proc-macros"
-version = "0.26.0"
+version = "0.26.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2da3f8ab5ce1bb124b6d082e62dffe997578ceaf0aeb9f3174a214589dc00f07"
+checksum = "9cc1f1d4a2ed7619d08e9e86fa1759b16da756c5d8b02d62e98664417f3ac25d"
 dependencies = [
  "heck 0.5.0",
  "proc-macro-crate",
@@ -10002,9 +10005,9 @@ dependencies = [
 
 [[package]]
 name = "jsonrpsee-server"
-version = "0.26.0"
+version = "0.26.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4c51b7c290bb68ce3af2d029648148403863b982f138484a73f02a9dd52dbd7f"
+checksum = "c01a2a627365144221ad5883ce2ea3953e152e29d102f2eeca8cbfc1be4bb286"
 dependencies = [
  "futures-util",
  "http 1.1.0",
@@ -10012,8 +10015,8 @@ dependencies = [
  "http-body-util",
  "hyper 1.6.0",
  "hyper-util",
- "jsonrpsee-core 0.26.0",
- "jsonrpsee-types 0.26.0",
+ "jsonrpsee-core 0.26.1",
+ "jsonrpsee-types 0.26.1",
  "pin-project",
  "route-recognizer",
  "serde",
@@ -10041,9 +10044,9 @@ dependencies = [
 
 [[package]]
 name = "jsonrpsee-types"
-version = "0.26.0"
+version = "0.26.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bc88ff4688e43cc3fa9883a8a95c6fa27aa2e76c96e610b737b6554d650d7fd5"
+checksum = "e6e6de48c2fb8ba2773f4429c28349576f98d73a3b1d647d963f96df53210312"
 dependencies = [
  "http 1.1.0",
  "serde",
@@ -11091,9 +11094,9 @@ dependencies = [
 
 [[package]]
 name = "litep2p"
-version = "0.15.1"
+version = "0.15.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5e588ab8f917ed65ebcf00ab52da6001e5724fbabac9ff6f06623ea7fa004cda"
+checksum = "75a2c94e6b822a70bf38263b39c26ce3bffbdd78795d7da8de134d1f0cb3f7ea"
 dependencies = [
  "async-trait",
  "bs58",
@@ -14287,6 +14290,24 @@ dependencies = [
 ]
 
 [[package]]
+name = "pallet-on-demand-para"
+version = "0.1.0"
+dependencies = [
+ "fp-coretime",
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
+ "log",
+ "num-traits",
+ "pallet-balances",
+ "parity-scale-codec",
+ "scale-info",
+ "sp-arithmetic 23.0.0",
+ "sp-io 30.0.0",
+ "sp-runtime 31.0.1",
+]
+
+[[package]]
 name = "pallet-oracle"
 version = "1.0.0"
 dependencies = [
@@ -15591,6 +15612,41 @@ dependencies = [
 ]
 
 [[package]]
+name = "pallet-validator-collators"
+version = "0.1.0"
+dependencies = [
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
+ "log",
+ "pallet-balances",
+ "pallet-collator-selection",
+ "pallet-session",
+ "parity-scale-codec",
+ "scale-info",
+ "sp-io 30.0.0",
+ "sp-runtime 31.0.1",
+ "sp-staking",
+ "sp-tracing 16.0.0",
+]
+
+[[package]]
+name = "pallet-validator-set-announcer"
+version = "0.1.0"
+dependencies = [
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
+ "pallet-session",
+ "pallet-validator-collators",
+ "parity-scale-codec",
+ "scale-info",
+ "sp-io 30.0.0",
+ "sp-runtime 31.0.1",
+ "sp-staking",
+]
+
+[[package]]
 name = "pallet-verify-signature"
 version = "1.0.0"
 dependencies = [
@@ -16167,9 +16223,16 @@ dependencies = [
  "pallet-balances",
  "pallet-identity",
  "pallet-message-queue",
+ "pallet-session",
+ "pallet-staking-async",
+ "pallet-validator-collators",
+ "pallet-validator-set-announcer",
  "pallet-xcm",
  "parachains-common",
  "parity-scale-codec",
+ "sp-externalities 0.25.0",
+ "sp-keyring",
+ "sp-keystore 0.34.0",
  "sp-runtime 31.0.1",
  "staging-xcm",
  "staging-xcm-executor",
@@ -16215,6 +16278,7 @@ dependencies = [
  "pallet-transaction-payment",
  "pallet-transaction-payment-rpc-runtime-api",
  "pallet-utility",
+ "pallet-validator-collators",
  "pallet-verify-signature",
  "pallet-xcm",
  "pallet-xcm-benchmarks",
@@ -17993,6 +18057,7 @@ dependencies = [
  "pallet-nomination-pools-runtime-api",
  "pallet-offences",
  "pallet-offences-benchmarking",
+ "pallet-on-demand-para",
  "pallet-oracle",
  "pallet-oracle-runtime-api",
  "pallet-origin-restriction",
@@ -18040,6 +18105,8 @@ dependencies = [
  "pallet-tx-pause",
  "pallet-uniques",
  "pallet-utility",
+ "pallet-validator-collators",
+ "pallet-validator-set-announcer",
  "pallet-verify-signature",
  "pallet-vesting",
  "pallet-vesting-precompiles",
@@ -22180,7 +22247,7 @@ dependencies = [
  "ip_network",
  "libp2p",
  "linked_hash_set",
- "litep2p 0.15.1",
+ "litep2p 0.15.3",
  "log",
  "mockall",
  "multistream-select",
@@ -22282,7 +22349,7 @@ dependencies = [
  "bytes",
  "cid",
  "futures",
- "litep2p 0.15.1",
+ "litep2p 0.15.3",
  "log",
  "proptest",
  "rand 0.8.5",
@@ -22502,7 +22569,7 @@ dependencies = [
  "ed25519-dalek",
  "libp2p-identity",
  "libp2p-kad",
- "litep2p 0.15.1",
+ "litep2p 0.15.3",
  "log",
  "multiaddr",
  "multihash",
@@ -31748,9 +31815,9 @@ dependencies = [
 
 [[package]]
 name = "zombienet-configuration"
-version = "0.5.1"
+version = "0.5.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "40314061c995934854e16d299c97c77a0a873b4c1e6f413a065981f21179edb0"
+checksum = "e80a42d1c012a22e3d9e1187fa93f3150daa123f2fc67a373f4219e4d80452ba"
 dependencies = [
  "anyhow",
  "lazy_static",
@@ -31769,9 +31836,9 @@ dependencies = [
 
 [[package]]
 name = "zombienet-orchestrator"
-version = "0.5.1"
+version = "0.5.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d28655f6c6e89ff84875e8569b27f8dd98fdd3cc02d94e06b754e0c53ac5950d"
+checksum = "1c794acc8e8a29d800f84033ecad97edc3ae08f2b1d4b5b4525ef5c99be4dfa0"
 dependencies = [
  "anyhow",
  "array-bytes 6.2.2",
@@ -31810,9 +31877,9 @@ dependencies = [
 
 [[package]]
 name = "zombienet-prom-metrics-parser"
-version = "0.5.1"
+version = "0.5.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2747d7f7c0aa09b12e787406d65a44b80df441e27fdbe326fa17ab901c2a6132"
+checksum = "6560a140dec3685a5940a2a74abb28d3201e6a1dcc03693ed586c870265ddb78"
 dependencies = [
  "pest",
  "pest_derive",
@@ -31821,9 +31888,9 @@ dependencies = [
 
 [[package]]
 name = "zombienet-provider"
-version = "0.5.1"
+version = "0.5.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8d20781b80bf19e14f4423f94d957ad0f498e1077bf77b24f005dab1a6858571"
+checksum = "8d9fbcd24cb4d2ec5b5e2ad8dd9f5fd08852d7bce4b9b7718509c39fb0b5934a"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -31853,9 +31920,9 @@ dependencies = [
 
 [[package]]
 name = "zombienet-sdk"
-version = "0.5.1"
+version = "0.5.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ba131daf8ab357922375e84c8dd4f21999b32043af0bddd5a956579d8e6205f7"
+checksum = "6a1c543a28054f8fe8952533300112e7b693439eb21b6a6e2e60fb45919981cf"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -31879,9 +31946,9 @@ dependencies = [
 
 [[package]]
 name = "zombienet-support"
-version = "0.5.1"
+version = "0.5.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "328cabfb6b3dae48a9f8a7a0c467897738c948a59da12c59bd500f894a0a7d88"
+checksum = "899b3f3fea72f501fbf273cd16cba54f0b89fa75028b8c0942a841bb306b3f53"
 dependencies = [
  "anyhow",
  "async-trait",
