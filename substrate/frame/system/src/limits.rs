@@ -94,9 +94,16 @@ impl BlockLengthBuilder {
 
 	/// Set `max` for `Operational` and `Mandatory`, and `ratio * max` for `Normal`.
 	pub fn normal_ratio(mut self, max: u32, ratio: Perbill) -> Self {
-		self.length.max = PerDispatchClass::new(|class| {
-			if class == DispatchClass::Normal { ratio * max } else { max }
-		});
+		self.length.max =
+			PerDispatchClass::new(
+				|class| {
+					if class == DispatchClass::Normal {
+						ratio * max
+					} else {
+						max
+					}
+				},
+			);
 		self
 	}
 
